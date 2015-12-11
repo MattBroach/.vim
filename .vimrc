@@ -1,15 +1,39 @@
-" Add vim packages with Pathogen
-execute pathogen#infect()
+" Add vim packages with Vundle 
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'blueyed/vim-diminactive'
+Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tomtom/tcomment_vim'
+
+call vundle#end()
+
+filetype plugin indent on
+set encoding=utf-8
 
 " Turn on line numbers
 set number
 
 " Turn on syntax highlighting
 syntax on
-let g:solarized_termtrans = 1
-let g:solarized_termcolors=256
-let g:solarized_visibility="high"
-colorscheme solarized
+"Solarized Color Settings
+"let g:solarized_termtrans = 1
+"let g:solarized_termcolors=256
+"let g:solarized_visibility="high"
+"colorscheme solarized
+
+"Gruvbox color settings
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
 set background=dark
 
 " Turn tabs into four spaces
@@ -39,8 +63,11 @@ set incsearch "incremental search (search as you type)
 set ignorecase "ignore case when searching
 set smartcase " Ignore case when searching lowercase
 
-filetype plugin indent on
-set encoding=utf-8
+" split key mappings
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " turn off arrow keys in vim to get used to using propper nave
 nnoremap <up> <nop>
