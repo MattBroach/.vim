@@ -14,6 +14,7 @@ Plugin 'blueyed/vim-diminactive'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 
@@ -81,11 +82,27 @@ inoremap <right> <nop>
 
 " CtrlP customizations
 let g:ctrlp_custom_ignore = {
-  \  'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations)$',
+  \  'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations|_output)$',
   \  'file': '\v\.(pyc|DS_STORE|sublime\-project|sublime\-workspace|jpg|png|jpeg|ico)$',
 \}
 
+" CtrlP remaps
 nmap <leader>p :CtrlP<cr>
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bm :CtrlPMixed<cr>
 nmap <leader>bs :CtrlPMRU<cr>
+
+" System clipboard remaps
+nmap <leader>r :r !pbpaste<cr>
+nmap <leader>x :.w !pbcopy<cr><cr>
+vmap <leader>x :w !pbcopy<cr><cr>
+
+" Syntastic Settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
