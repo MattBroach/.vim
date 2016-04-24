@@ -1,9 +1,8 @@
 # Vim configuration files
 
-Contains .vimrc and all plugin files.  To install, simply type:
-
+Contains .vimrc files and related settings/plugins.  To install, simply type:
 ```
 cd 
 git clone https://github.com/MattBroach/.vim.git
-ln -s .vim/.vimrc .vimrc
+sh ~/.vim/install_vim.sh
 ```

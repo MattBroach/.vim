@@ -14,7 +14,9 @@ Plugin 'blueyed/vim-diminactive'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'rking/ag.vim'
+Plugin 'elzr/vim-json'
+"Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 
@@ -36,6 +38,9 @@ syntax on
 colorscheme gruvbox
 let g:gruvbox_contrast_dark="hard"
 set background=dark
+
+" vim-json settings
+let g:vim_json_syntax_conceal = 0
 
 " Turn tabs into four spaces
 set expandtab
@@ -70,7 +75,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" turn off arrow keys in vim to get used to using propper nave
+" turn off arrow keys in vim to get used to using proper nav
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -98,11 +103,11 @@ nmap <leader>x :.w !pbcopy<cr><cr>
 vmap <leader>x :w !pbcopy<cr><cr>
 
 " Syntastic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
