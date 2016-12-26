@@ -16,6 +16,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'rking/ag.vim'
 Plugin 'elzr/vim-json'
+Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'lepture/vim-jinja'
 "Plugin 'scrooloose/syntastic'
 
 call vundle#end()
@@ -52,6 +55,9 @@ set smarttab
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType scss setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType jinja setlocal shiftwidth=2 tabstop=2 expandtab
 
 " ESC remap
 imap jk <Esc>
@@ -111,3 +117,9 @@ vmap <leader>x :w !pbcopy<cr><cr>
 " let g:syntastic_auto_loc_list = 1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
+
+" Jinja/Nunjucks templating enabled for .njk files
+au BufNewFile,BufRead *.njk set ft=jinja
