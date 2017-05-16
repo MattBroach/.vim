@@ -15,10 +15,11 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'rking/ag.vim'
-Plugin 'elzr/vim-json'
-Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'lepture/vim-jinja'
+Plugin 'godlygeek/tabular'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'jason0x43/vim-js-indent'
+Plugin 'sheerun/vim-polyglot'
 "Plugin 'scrooloose/syntastic'
 
 call vundle#end()
@@ -54,6 +55,7 @@ set smarttab
 " Overwrite tab width for certain file types
 autocmd FileType html setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 expandtab
+autocmd FileType json setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType scss setlocal shiftwidth=2 tabstop=2 expandtab
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 expandtab
@@ -123,3 +125,9 @@ let g:jsx_ext_required = 0
 
 " Jinja/Nunjucks templating enabled for .njk files
 au BufNewFile,BufRead *.njk set ft=jinja
+
+" vim markdown settings
+let g:vim_markdown_folding_disabled=1
+
+" disable indetning from typescript to let it be handled by js plugin
+let g:typescript_indent_disable = 1
