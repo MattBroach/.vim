@@ -94,9 +94,10 @@ inoremap <left> <nop>
 inoremap <right> <nop>
 
 " CtrlP customizations
+set wildignore+=*-env
 let g:ctrlp_custom_ignore = {
-  \  'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations|_output|dist|\.vagrant|env)$',
-  \  'file': '\v\.(pyc|DS_STORE|sublime\-project|sublime\-workspace|jpg|png|jpeg|ico|swp|swo)$',
+  \ 'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations|_output|dist|\.vagrant|env)$',
+  \ 'file': '\v\.(pyc|DS_STORE|sublime\-project|sublime\-workspace|jpg|png|jpeg|ico|swp|swo)$',
 \}
 let g:ctrlp_show_hidden = 1
 
