@@ -7,7 +7,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'blueyed/vim-diminactive'
@@ -18,7 +18,6 @@ Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'Glench/Vim-Jinja2-Syntax'
-Plugin 'jason0x43/vim-js-indent'
 Plugin 'sheerun/vim-polyglot'
 "Plugin 'scrooloose/syntastic'
 
@@ -32,7 +31,7 @@ set number
 
 " Turn on syntax highlighting
 syntax on
-"Solarized Color Settings
+" Solarized Color Settings
 "let g:solarized_termtrans = 1
 "let g:solarized_termcolors=256
 "let g:solarized_visibility="high"
@@ -67,6 +66,10 @@ imap jk <Esc>
 " leader remap
 let mapleader = "\<Space>"
 
+"Personal macros:
+nnoremap <leader>i mzgg=G`z
+nnoremap <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 " Indenting
 set ai " Automatically set the indent of a new line (local to buffer)
 set si " Smartindent (local to buffer)
@@ -96,10 +99,22 @@ inoremap <right> <nop>
 " CtrlP customizations
 set wildignore+=*-env
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations|_output|dist|\.vagrant|env)$',
+  \ 'dir':  '\v[\/](\.git|dist\.dev|dist\.prod|htmlcov|bower_components|coverage|node_modules|migrations|_output|dist|\.vagrant|env|\.tox|build)$',
   \ 'file': '\v\.(pyc|DS_STORE|sublime\-project|sublime\-workspace|jpg|png|jpeg|ico|swp|swo)$',
 \}
 let g:ctrlp_show_hidden = 1
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " CtrlP remaps
 nmap <leader>p :CtrlP<cr>
