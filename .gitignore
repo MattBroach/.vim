@@ -12,3 +12,9 @@ Thumbs.db
 ##################
 *.swp
 .netrwhist
+
+# plugin files #
+################
+autoload/
+plugged/
+bundle/
