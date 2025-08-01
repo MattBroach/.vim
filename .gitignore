@@ -11,6 +11,7 @@ Thumbs.db
 # vim temp files #
 ##################
 *.swp
+*.swn
 .netrwhist
 
 # plugin files #

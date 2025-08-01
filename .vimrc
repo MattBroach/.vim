@@ -23,9 +23,8 @@ Plug 'godlygeek/tabular'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'prettier/vim-prettier', {
-    \'do': 'yarn install --frozen-lockfile --production',
-\}
+Plug 'psf/black', {'branch': 'stable'}
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 
 call plug#end()
 
@@ -316,3 +315,9 @@ nmap <Leader>l <Plug>(Prettier)
 let g:prettier#config#single_quote = 'true'
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
+
+" Black config
+augroup black_on_save
+  autocmd!
+  autocmd BufWritePre *.py Black
+augroup end
