@@ -25,6 +25,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'psf/black', {'branch': 'stable'}
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html', 'typescriptreact', 'javascriptreact'] }
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -167,6 +171,10 @@ set updatetime=300
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
+
+" Change vim.copilat to use SPACE + TAB to accept suggestions
+imap <silent><script><expr> <leader><Tab> copilot#Accept("")
+let g:copilot_no_tab_map = v:true
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: There's always complete item selected by default, you may want to enable
@@ -321,3 +329,6 @@ augroup black_on_save
   autocmd!
   autocmd BufWritePre *.py Black
 augroup end
+
+" re fixes for MacOS
+set re=0
